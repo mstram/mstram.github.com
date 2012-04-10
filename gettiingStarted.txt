@@ -1,0 +1,8 @@
+mkdir mstram.github.com
+  cd mstram.github.com
+  git init
+  touch README
+  git add README
+  git commit -m 'first commit'
+  git remote add origin git@github.com:mstram/mstram.github.com.git
+  git push -u origin master
