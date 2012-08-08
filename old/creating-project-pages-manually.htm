@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="creating-project-pages-manually_files/track.js" data-site-id="4f4d4164f5a1f5651500026c" id="gauges-tracker" async="" type="text/javascript"></script><script src="creating-project-pages-manually_files/f7ac4fc66e84948075236d4521f9303b3af35d18.js" async="" type="text/javascript"></script><script src="creating-project-pages-manually_files/i.js" async="" type="text/javascript"></script><script type="text/javascript">
+      var _kmq = _kmq || [];
+      function _kms(u){
+        setTimeout(function(){
+        var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+        s.src = u; f.parentNode.insertBefore(s, f);
+        }, 1);
+      }
+      _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/f7ac4fc66e84948075236d4521f9303b3af35d18.1.js');
+    </script>
+
+  <title>Creating Project Pages manually · github:help</title>
+  <link href="creating-project-pages-manually_files/application-b4b5561ada09e4998ab46a7c92ec767e.css" media="screen" rel="stylesheet" type="text/css">
+  <!--[if lt IE 8]>
+    <link href="/assets/ie-hacks-295ae0f3ea07637c5e55e0b7758aa412.css" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+  <script src="creating-project-pages-manually_files/application-5240c1acd149d23f3dd5a0463829ea35.js" type="text/javascript"></script>
+
+  <meta content="authenticity_token" name="csrf-param">
+<meta content="xF3o2pm10+vAHsqcPYJzTwEyS0sFyEpz3leMN/oKlz0=" name="csrf-token">
+</head>
+
+<body class="platform-mac platform-windows platform-linux platform-all platform-switch" id="com">
+<div id="not-footer">
+  <div id="header">
+    <div class="clearfix">
+      <a href="https://help.github.com/" class="site-logo">
+        <img alt="github:help" src="creating-project-pages-manually_files/logo-help-5c4aed4e1bef20c4f6b907d1d880f9b5.png" height="30">
+      </a>
+
+      <ul class="top-nav">
+        <li>
+          <a href="https://help.github.com/contact?article_slug=creating-project-pages-manually">
+            Contact Support
+          </a>
+        </li>
+        <li><a href="http://www.github.com/">Back to GitHub</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div id="content-wrapper">
+    <div class="site">
+
+      <div class="content-header small">
+  <h6 class="breadcrumbs">
+    <a href="https://help.github.com/categories/20/articles">Pages</a>
+    /
+    Creating Project Pages manually
+  </h6>
+
+  <div class="search-form small">
+    <form accept-charset="UTF-8" action="/articles/search" id="articles-search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+  <div class="outer">
+    <div class="inner fade-label">
+      <input style="outline: medium none;" autocomplete="off" name="q" id="q" class="js-articles-quicksearch" placeholder="How can we help?" data-url="/articles/quicksearch" type="text">
+      <button><span class="mini-icon search-input"></span>Search</button>
+      <div class="autocomplete-results" style="display: none; left: 0px; top: 26px; width: 215px;"></div>
+    </div>
+  </div>
+</form>
+  </div>
+</div>
+
+<div class="article">
+  <h2>Creating Project Pages manually</h2>
+
+  <div id="article-platform-nav">
+    <ul>
+        <li class="platform-mac">
+          <a href="#platform-mac" data-platform="mac">
+            mac
+          </a>
+        </li>
+        <li class="platform-windows">
+          <a href="#platform-windows" data-platform="windows">
+            windows
+          </a>
+        </li>
+        <li class="platform-linux">
+          <a href="#platform-linux" data-platform="linux">
+            linux
+          </a>
+        </li>
+        <li class="platform-all">
+          <a href="#platform-all" data-platform="all">
+            all
+          </a>
+        </li>
+    </ul>
+  </div>
+
+  <div class="article-body content-body wikistyle markdown-format">
+      <p class="intro">
+Adding a new set of Pages for a project manually is a straightforward process if you're used to using command-line git.
+</p>
+
+<h3>Play it safe</h3>
+
+<p>Setting up Pages on a project requires a new "orphan" branch in your 
+repo.  The safest way to do this is to start with a fresh clone.</p>
+
+<pre class="command-line"><span class="tooltip">git clone https://github.com/<em>user</em>/<em>repo</em>.git<span># Clone our repo</span></span>
+<span class="output"><span># </span>Cloning into '<em>repo</em>'...</span>
+<span class="output"><span># </span>remote: Counting objects: 2791, done.</span>
+<span class="output"><span># </span>remote: Compressing objects: 100% (1225/1225), done.</span>
+<span class="output"><span># </span>remote: Total 2791 (delta 1722), reused 2513 (delta 1493)</span>
+<span class="output"><span># </span>Receiving objects: 100% (2791/2791), 3.77 MiB | 969 KiB/s, done.</span>
+<span class="output"><span># </span>Resolving deltas: 100% (1722/1722), done.</span>
+</pre>
+
+<h3>Lets get crackin'</h3>
+
+<p>Now that we have a clean repo, we need to create the new branch and remove all content from the working directory and index.</p>
+
+<pre class="command-line"><span class="tooltip">cd <em>repo</em>
+
+$ git checkout --orphan gh-pages<span># Creates our branch, without any parents (it's an orphan!)</span></span>
+<span class="output"><span># </span>Switched to a new branch 'gh-pages'</span>
+
+<span class="tooltip">git rm -rf .<span># Remove all files from the old working tree</span></span>
+<span class="output"><span># </span>rm '.gitignore'</span>
+</pre>
+
+<p>Now we have an empty working directory. We can create some content in this branch and push it to GitHub. For example:</p>
+
+<pre class="command-line">$ echo "My GitHub Page" &gt; index.html
+$ git add .
+$ git commit -a -m "First pages commit"
+$ git push origin gh-pages
+</pre>
+
+<blockquote>
+<p><strong>Good to know:</strong> after the first push it can take up to ten minutes before the content is available.</p>
+</blockquote>
+
+  </div>
+
+
+  <div class="footer">
+    <hr>
+    <ul class="article-footer button-nav">
+      <li>
+        <a href="https://help.github.com/contact?article_slug=creating-project-pages-manually" class="minibutton mini-icon discussion">contact a human</a>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+  <div id="footer">
+    <div class="inner">
+      <a href="#" class="logo"></a>
+      <div class="links">
+          <ul>
+            <li><a href="https://help.github.com/terms-of-service">Terms of Service</a></li>
+            <li><a href="https://help.github.com/privacy-policy">Privacy</a></li>
+            <li><a href="https://help.github.com/security">Security</a></li>
+          </ul>
+
+        <p>© <span id="year">2012</span> GitHub Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </div> <!-- /#footer -->
+
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4f4d4164f5a1f5651500026c');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+
+
+
+</body></html>
